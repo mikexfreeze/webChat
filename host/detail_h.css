@@ -22,6 +22,11 @@
     background: url("../img/icon/dsj.png");
     display: inline-block;
 }
+/*聊天主体框架*/
+/*#divContent{*/
+    /*position: relative;*/
+    /*top:0px;*/
+/*}*/
 
 /*对话框*/
 .qaf{
@@ -41,6 +46,10 @@
     border-bottom-width: 0px !important;
     border-top-width: 0px !important;
     padding: 0px !important;
+}
+
+.ui-listview{
+    margin-top: 0px !important;
 }
 
 /*头像*/
@@ -81,12 +90,13 @@
 }
 /*警告标志*/
 .jg{
-    margin-top: 1.5em;
+    margin-top: 3.5em;
     text-align: center;
     font-size: 0.8em;
 }
 
-.jp img{
+.jg img{
+    width: 2.2em;
 }
 
 
@@ -224,8 +234,9 @@ div.speech.left:after {
     margin-top: -1em;
     padding-left: 10px;
     margin-left: 0.3em;
+    margin-bottom: 0.6em;
     border: solid 1px lightgrey;
-    border-radius:1px 1px 10px 10px;
+    border-radius:10px 1px 10px 10px;
     box-shadow:2px 2px 5px rgba(0,0,0,.6);
 }
 
