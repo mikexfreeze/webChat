@@ -15,44 +15,76 @@
     <script src="../js/common.js"></script>
     <script src="../lib/jqueryUrlParam.js"></script>
     <script src="../lib/jsrender.js"></script>
+    <script id="tmpl_myAskOk" type="text/x-jsrender">
+        <li class="cb" cmid='{{:cmid}}' identity='{{:identity}}' is_readed='{{:is_readed}}' is_refund='{{:is_refund}}' state='{{:state}}'>{{:posttime}}</li>
+        <div class="btn cb jg" style="width: 17%;height: 2.5em;">
+            <img src="img/icon/jg.png">
+            <li class="cb" is_payed='{{:is_payed}}'></li>
+        </div>
+        <div class="text" style="width: 66%;">
+            <div class="speech right" >{{:content}}</div>
+            <div class="twoBtn" >
+                <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>
+                <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a>
+            </div>
+        </div>
+        <div class="" style="width: 17%;">
+            <div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div>
+        </div>
+        <div class="cb"></div>
+    </script>
+    <script id="tmpl_docAnswer" type="text/x-jsrender">
+                <li class="oneChat" cmid='{{:cmid}}' identity='{{:identity}}' is_readed='{{:is_readed}}' is_refund='{{:is_refund}}' state='{{:state}}'>
+                    <div class="posttime">{{:posttime}}</div>
+                    <div class="imgInfo">
+                        <img src="img/icon/jg.png">
+                        <p class="identity"></p>
+                    </div>
+                    <div class="text" style="width: 66%;">
+                        <div class="speech right" >{{:content}}</div>
+                        <div class="twoBtn" >
+                            <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>
+                            <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a>
+                        </div>
+                    </div>
+                </li>
 
+    </script>
     <title>客户端</title>
 </head>
 <body>
 <div id="page_main" class="page" data-role="page">
     <div data-role="header" data-position="fixed">
-        <a onclick="" data-icon="carat-l" class="ui-btn-left" data-iconpos="notext"></a>
+        <a onclick="abortAllRequests();pageReturn();" data-icon="carat-l" class="ui-btn-left" data-iconpos="notext"></a>
         <div class="header_2"  style="background: rgb(73,158,129);color: #fff;">张仲景的咨询</div>
-
+        
     </div>
-
-
     <div data-role="main" class="" style="">
-        <div class="ui-navbar" id="nav" style="">
-            <p class="tl">默认排序（全部）<span class="dsj"></span></p>
-            <ul id="nav_list" style="display: none;">
-                <li>今日内</li>
-                <li>本周内</li>
-                <li>本月内</li>
-            </ul>
-            <input id="hidval" type="hidden" value="0"/>
-        </div>
+        <!--<div class="ui-navbar" id="nav" style="">-->
+            <!--<p class="tl">默认排序（全部）<span class="dsj"></span></p>-->
+            <!--<ul id="nav_list" style="display: none;">-->
+                <!--<li>今日内</li>-->
+                <!--<li>本周内</li>-->
+                <!--<li>本月内</li>-->
+            <!--</ul>-->
+            <!--<input id="hidval" type="hidden" value="0"/>-->
+        <!--</div>-->
         <span id="divMsg" class="clsTip"></span>
-        <div id="divContent" class="ui-content" style="">
-            <ul class="qaf cb"  data-role="listview">
-                <li>2015年1月1日 12:00:00</li>
-                <div class="" style="width: 17%;">
-                    <div class="txM">
-                        <img src="img/icon/xr.png" alt=""><p>医生</p>
-                    </div>
-                </div>
-                <div class="text" style="width: 66%;"><div class="speech left" > 你好!在晚上好!我在!有时需要精确的选择任意多个指定的元素，类似于从文具盒中挑选出多根自已喜欢的笔，就需要调用sele1,sele2,seleN选择器，它的调用格式如下</div></div>
-                <div class="btn" style="width: 17%;"></div>
-            </ul>
-            <ul class="qaf"  data-role="listview">
+        <div id="divMsgU" class="clsTip" style="position: fixed;text-align: center;margin: auto;width: 100%;z-index: 3;background-color: lightgrey;display: none;">测试</div>
+        <div id="divContent" class="ui-content" style="position: relative;top:0px;">
+            <!--<ul id="docAnwser" class="qaf cb"  data-role="listview">-->
+                <!--<li>2015年1月1日 12:00:00</li>-->
+                <!--<div class="" style="width: 17%;">-->
+                    <!--<div class="txM">-->
+                        <!--<img src="img/icon/xr.png" alt=""><p>医生</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="text" style="width: 66%;"><div class="speech left" > 你好!在晚上好!我在!有时需要精确的选择任意多个指定的元素，类似于从文具盒中挑选出多根自已喜欢的笔，就需要调用sele1,sele2,seleN选择器，它的调用格式如下</div></div>-->
+                <!--<div class="btn" style="width: 17%;"></div>-->
+            <!--</ul>-->
+            <!--<ul class="qaf"  data-role="listview">
                 <li class="cb">2015年1月2日 12:00:00</li>
                 <div class="btn cb jg" style="width: 17%;height: 2.5em;">
-                    <!--background: url("../img/icon/jg.png") no-repeat center center;-->
                     <img src="img/icon/jg.png" alt="">
                     <li class="cb">余额不足</li>
                 </div>
@@ -61,21 +93,40 @@
                         你好!在晚上好!我在!明天早上8点要开会!晚上好!我在!复合属性。设置对象边框的特性。参阅outline属性。如使用该复合属性定义其单个参数，则其他参数的默认值将无条件覆盖各自对应的单个属性设置。对应的脚本特性为border。
                     </div>
                     <div class="twoBtn">
-
                         <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>
                         <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a>
-
                     </div>
                 </div>
                 <div class="" style="width: 17%;">
                     <div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div>
                 </div>
                 <div class="cb"></div>
+            </ul>-->
+            <ul id="myAskOk" class="qaf"  data-role="listview">
+                <!--<li class="cb">2015年1月2日 12:00:00</li>
+                <div class="btn cb jg" style="width: 17%;height: 2.5em;">
+                    <img src="img/icon/jg.png" alt="">
+                    <li class="cb">余额不足</li>
+                </div>
+                <div class="text" style="width: 66%;">
+                    <div class="speech right" >
+                        你好!在晚上好!我在!明天早上8点要开会!晚上好!我在!复合属性。设置对象边框的特性。参阅outline属性。如使用该复合属性定义其单个参数，则其他参数的默认值将无条件覆盖各自对应的单个属性设置。对应的脚本特性为border。
+                    </div>
+                    <div class="twoBtn">
+                        <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>
+                        <a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a>
+                    </div>
+                </div>
+                <div class="" style="width: 17%;">
+                    <div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div>
+                </div>
+                <div class="cb"></div>-->
             </ul>
         </div>
     </div>
 
     <div data-role="footer" data-position="fixed">
+        <div id="divMsgD" class="clsTip"></div>
         <div id="addwj" class="fl" style="width: 15%;">
             <a href="#" class="micro ui-btn ui-corner-all ui-icon-audio ui-btn-icon-notext"></a><br>
             <a href="#" class="addimg ui-btn ui-corner-all ui-icon-plus ui-btn-icon-notext"></a>
@@ -85,33 +136,126 @@
         </div>
         <div id="subbt" class="fr" style="width: 25%; ">
             <input id="Button1" class="sub" type="submit" data-inline="true" value="发送">
-            <input id="Button2" class="sub" type="submit" data-inline="true" value="测试">
+            <!--<input id="Button2" class="sub" type="submit" data-inline="true" value="测试">-->
         </div>
+        <div id="dopay" style="display: none;"></div>
     </div>
 
 </div>
+<div data-role="page" id="page_wxpay" class="page">
+    <div data-role="header" data-position="fixed">
+        <a onclick="window.location.href='wd_list.html'" data-transition="slide" data-direction="reverse" data-icon="carat-l" class="ui-btn-left " data-iconpos="notext"></a>
+        <div class="header_2">微信支付</div>
+    </div>
+    <div role="main" class="ui-content">
+        <h2>该笔订单支付金额为 <span style="color:#f00;font-size:2em;" id="needPay"></span> 元</h2>
+        <div id="runpay" style="display:none;"></div>
+    </div>
+</div>
 
 <script type="text/javascript">
-    var jsondata = '{"staff":[{"time":"2015年1月1日 12:00:00","name":"洪七","age":70},{"name":"郭靖","age":35},{"name":"黄蓉","age":30}]}';
-    var jsonobj = JSON.parse(jsondata);
-    var $html =
-        '<ul class="qaf cb ui-listview" style="clear: both;"  data-role="listview">'+
-            '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">'+jsonobj.staff[0].time+'</li>'+
-            '<div class="cb" style="width: 17%;clear: both;">'+
-                '<div class="txM">'+
-                    '<img src="img/icon/xr.png" alt=""><p>医生</p>'+
-                '</div>'+
-            '</div>'+
-            '<div class="text" style="width: 66%;"><div class="speech left" > 你好!在晚上好!我在!有时需要精确的选择任意多个指定的元素，类似于从文具盒中挑选出多根自已喜欢的笔，就需要调用sele1,sele2,seleN选择器，它的调用格式如下</div></div>'+
-            '<div class="btn" style="width: 17%;height: 1em;"></div>'+
-        '</ul>'
+
+
+    function template(arr){
+
+    }
+
+    function postNewData(arr) {
+        for(var i=0;i<arr.length;i++){
+            var Your = '<ul class="qaf cb ui-listview" style="clear: both;"  data-role="listview">'+
+                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">'+arr[i].time+'</li>'+
+                    '<div class="cb" style="width: 17%;clear: both;"><div class="txM">'+
+                    '<img src="img/icon/xr.png" alt=""><p>'+arr[i].name +'</p></div></div>'+
+                    '<div class="text" style="width: 66%;"><div class="speech left" >'+arr[i].text +'</div></div>'+
+                    '<div class="btn" style="width: 17%;height: 1em;"></div></ul>';
+            var MyYes =  '<ul class="qaf cb ui-listview"  data-role="listview">'+
+                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">2015年1月2日 12:00:00</li>'+
+                    '<div class="btn cb jg" style="width: 17%;height: 2.5em;"></div>'+
+                    '<div class="text" style="width: 66%;">'+
+                    '<div class="speech right" >'+arr[i].text +'</div>'+
+                    '</div><div class="" style="width: 17%;">'+
+                    '<div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div></div>'+
+                    '<div class="cb"></div></ul>';
+            var MyNo =  '<ul class="qaf cb ui-listview"  data-role="listview">'+
+                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">2015年1月2日 12:00:00</li>'+
+                    '<div class="btn cb jg" style="width: 17%;height: 2.5em;">' +
+                    '<img src="img/icon/jg.png" alt=""><li class="cb">余额不足</li></div>'+
+                    '<div class="text" style="width: 66%;">'+
+                    '<div class="speech right" >'+arr[i].text +'</div>'+
+                    '<div class="twoBtn"><a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>'+
+                    '<a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a></div>'+
+                    '</div><div class="" style="width: 17%;">'+
+                    '<div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div></div>'+
+                    '<div class="cb"></div></ul>';
+            if(arr[i].me){
+                $(Your).appendTo("#divContent");
+            }else{
+                if(arr[i].pay){
+                    $(MyYes).appendTo("#divContent")
+                }else{
+                    $(MyNo).appendTo("#divContent")
+                }
+            }
+        }
+    }
+
+//    function postOldData() {
+//        for(var i=0;i<arr.length;i++){
+//            var Your = '<ul class="qaf cb ui-listview" style="clear: both;"  data-role="listview">'+
+//                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">'+arr[i].time+'</li>'+
+//                    '<div class="cb" style="width: 17%;clear: both;"><div class="txM">'+
+//                    '<img src="img/icon/xr.png" alt=""><p>'+arr[i].name +'</p></div></div>'+
+//                    '<div class="text" style="width: 66%;"><div class="speech left" >'+arr[i].text +'</div></div>'+
+//                    '<div class="btn" style="width: 17%;height: 1em;"></div></ul>';
+//            var MyYes =  '<ul class="qaf cb ui-listview"  data-role="listview">'+
+//                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">2015年1月2日 12:00:00</li>'+
+//                    '<div class="btn cb jg" style="width: 17%;height: 2.5em;"></div>'+
+//                    '<div class="text" style="width: 66%;">'+
+//                    '<div class="speech right" >'+arr[i].text +'</div>'+
+//                    '</div><div class="" style="width: 17%;">'+
+//                    '<div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div></div>'+
+//                    '<div class="cb"></div></ul>';
+//            var MyNo =  '<ul class="qaf cb ui-listview"  data-role="listview">'+
+//                    '<li class="ui-li-static ui-body-inherit ui-first-child ui-last-child">2015年1月2日 12:00:00</li>'+
+//                    '<div class="btn cb jg" style="width: 17%;height: 2.5em;">' +
+//                    '<img src="img/icon/jg.png" alt=""><li class="cb">余额不足</li></div>'+
+//                    '<div class="text" style="width: 66%;">'+
+//                    '<div class="speech right" >'+arr[i].text +'</div>'+
+//                    '<div class="twoBtn"><a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow">撤回</a>'+
+//                    '<a href="#" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-arrow-r ui-btn-icon-right ui-alt-icon ">立即付费</a></div>'+
+//                    '</div><div class="" style="width: 17%;">'+
+//                    '<div class="txY"><img src="img/icon/xr.png" alt=""><p>我</p></div></div>'+
+//                    '<div class="cb"></div></ul>';
+//            if(arr[i].me){
+//                $("#divContent").html(Your + $("#divContent").html());
+//            }else{
+//                if(arr[i].pay){
+//                    $("#divContent").html(MyYes + $("#divContent").html())
+//                }else{
+//                    $("#divContent").html(MyNo + $("#divContent").html())
+//                }
+//            }
+//        }
+//    }
+
+
+
+
+
+
+<!--测试聊天载入效果-->
+
 
 
     $(function(){
-       $("#Button2").bind("click",function(){
-           $("#divContent").html($html)
-       });
+        $("#Button2").bind("click",function(){
+//            $("#divContent").html("");
+            postNewData()
+        });
     });
+
+
+
 </script>
 
 <!--排序列表显示&隐藏JS-->
@@ -129,43 +273,19 @@
     });
 </script>
 
-<!--收费免费按钮JS-->
-<script type="text/javascript">
-    $(function () {
-        $(".ui-flipswitch").bind("click", function () {
-            if ($(this).next("#sw").val() == 0) {
-                $(this).prev(".swLabel").html("免费");
-                $(this).next("#sw").val(1);
-            } else {
-                $(this).prev(".swLabel").html("收费");
-                $(this).next("#sw").val(0);
-            }
-        });
-    });
-</script>
+
+
+<!--滚动条位置测定-->
+<!--<script type="text/javascript">-->
+<!--$(window).scroll(function() {-->
+<!--if ($(document).scrollTop() <= 0) {-->
+<!--}-->
+<!--if ($(document).scrollTop() >= $(document).height() - $(window).height()) {-->
+<!--alert("滚动条已经到达底部为" + $(document).scrollTop());-->
+<!--}-->
+<!--});-->
+<!--</script>-->
 <script src="js/wdChat.js"></script>
 
-<!--<ul class="qaf cb"  data-role="listview">-->
-<!--<li>2015年1月1日 12:00:00</li>-->
-<!--<div class="" style="width: 17%;">-->
-<!--<div class="txM">-->
-<!--<img src="img/icon/xr.png" alt=""><p>我</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="text" style="width: 66%;"><div class="speech left" > 你好!在晚上好!我在!有时需要精确的选择任意多个指定的元素，类似于从文具盒中挑选出多根自已喜欢的笔，就需要调用sele1,sele2,seleN选择器，它的调用格式如下</div></div>-->
-<!--<div class="btn" style="width: 17%;">-->
-<!--<label class="swLabel">收费</label>-->
-<!--<input type="checkbox" data-role="flipswitch" name="switch" id="switch" class="sw" data-wrapper-class="custom-size-flipswitch">-->
-<!--<input id="sw" type="hidden" value="0"/>-->
-<!--</div>-->
-<!--</ul>-->
-<!--<ul class="qaf"  data-role="listview">-->
-<!--<li class="cb">2015年1月1日 12:00:00</li>-->
-<!--<div class="btn cb" style="width: 17%;height: 1em;"></div>-->
-<!--<div class="text" style="width: 66%;"><div class="speech right" > 你好!在晚上好!我在!明天早上8点要开会!晚上好!我在!</div></div>-->
-<!--<div class="" style="width: 17%;">-->
-<!--<div class="txY"><img src="img/icon/xr.png" alt=""><p>张医生</p></div>-->
-<!--</div>-->
-<!--</ul>-->
 </body>
 </html>
